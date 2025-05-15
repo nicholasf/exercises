@@ -7,7 +7,7 @@ import (
 )
 
 func TestReverse(t *testing.T) {
-	r := Reverse("abcd")
+	r := reverse("abcd")
 
 	if r != "dcba" {
 		t.Errorf("Expected 'dcba', got '%s'", r)

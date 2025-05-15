@@ -4,3 +4,12 @@ The below is an adaptation of the [original](./ToyRobotExam.md) that I decided t
 
 It is the same except that the IO layer should be via HTTP and TCP, and instead send JSON payloads to represent commands.
 
+The JSON command structure will resemble:
+
+{
+    command: "PLACE X,Y,F | MOVE | LEFT | RIGHT | REPORT"
+
+}
+
+For HTTP any move that would cause the robot to fall must return an appropriate 400 response code.
+
