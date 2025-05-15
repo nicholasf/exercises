@@ -55,4 +55,8 @@ func TestReverser(t *testing.T) {
 	if rr.Code != http.StatusOK {
 		t.Errorf("Expected status code %d, got %d", http.StatusOK, rr.Code)
 	}
+
+	if rr.Body.String() != "dcba" {
+		t.Errorf("Expected body 'dcba', got '%s'", rr.Body.String())
+	}
 }
