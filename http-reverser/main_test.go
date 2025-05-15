@@ -1,6 +1,8 @@
 package main
 
 import (
+	"net/http"
+	"net/http/httptest"
 	"testing"
 )
 
@@ -14,18 +16,31 @@ func TestReverse(t *testing.T) {
 
 func TestArgValidator(t *testing.T) {
 	tests := []struct {
-		arg      string
-		expected string
+		req    *http.Request
+		rr     *httptest.ResponseRecorder
+		status int
 	}{
-		{"", "arg is required"},
-		{"abcd", "dcba"},
+		{
+			req:    httptest.NewRequest("GET", "/reverser?arg=abcd", nil),
+			rr:     httptest.NewRecorder(),
+			status: http.StatusOK,
+		},
+		{
+			req:    httptest.NewRequest("GET", "/reverser", nil),
+			rr:     httptest.NewRecorder(),
+			status: http.StatusBadRequest,
+		},
 	}
 
 	for _, test := range tests {
-		t.Run(test.arg, func(t *testing.T) {
-			r := ArgValidator(test.arg)
-			if r != test.expected {
-				t.Errorf("Expected '%s', got '%s'", test.expected, r)
+		t.Run(test.req.URL.String(), func(t *testing.T) {
+			rr := test.rr
+			handler := ArgValidator((http.HandlerFunc(reverser)))
+
+			handler.ServeHTTP(rr, test.req)
+
+			if status := rr.Code; status != test.status {
+				t.Errorf("Expected status code %d, got %d", test.status, status)
 			}
 		})
 	}
