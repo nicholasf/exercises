@@ -45,3 +45,14 @@ func TestArgValidator(t *testing.T) {
 		})
 	}
 }
+
+func TestReverser(t *testing.T) {
+	req := httptest.NewRequest("GET", "/reverser?arg=abcd", nil)
+	rr := httptest.NewRecorder()
+
+	reverser(rr, req)
+
+	if rr.Code != http.StatusOK {
+		t.Errorf("Expected status code %d, got %d", http.StatusOK, rr.Code)
+	}
+}
