@@ -8,6 +8,7 @@ type Board struct {
 	ID     int
 	RobotX int
 	RobotY int
+	Robot  Robot
 }
 
 const (
@@ -15,14 +16,14 @@ const (
 	BoardLimitY = 5
 )
 
-var Boards []*Board
+var boards []*Board
 
 var BoardIDCounter = 0
 
-func NewBoard(robotX, robotY int) (*Board, error) {
+func NewBoard(robotX, robotY, facing int) (*Board, error) {
 
-	if Boards == nil {
-		Boards = make([]*Board, 1)
+	if boards == nil {
+		boards = make([]*Board, 1)
 	}
 
 	BoardIDCounter = BoardIDCounter + 1
@@ -39,6 +40,15 @@ func NewBoard(robotX, robotY int) (*Board, error) {
 		return nil, err
 	}
 
+	// Add the Robot, which records facing compass directions
+	board.Robot = Robot{facing}
+	err = board.Robot.validate()
+
+	if err != nil {
+		return nil, err
+	}
+
+	boards = append(boards, board)
 	return board, nil
 }
 

@@ -3,18 +3,20 @@ package entities
 import "testing"
 
 var (
-	b1            = Board{1, 0, 0}
-	b2            = Board{1, 4, 4}
-	bb1           = Board{1, -1, -1}
-	bb2           = Board{1, 5, 5}
+	b1            = Board{1, 0, 0, Robot{North}}
+	b2            = Board{1, 4, 4, Robot{North}}
+	bb1           = Board{1, -1, -1, Robot{South}}
+	bb2           = Board{1, 5, 5, Robot{South}}
+	bb3           = Board{1, 5, 5, Robot{6}}
+	bb4           = Board{1, 5, 5, Robot{-1}}
 	validBoards   = [2]Board{b1, b2}
-	invalidBoards = [2]Board{bb1, bb2}
+	invalidBoards = [4]Board{bb1, bb2, bb3, bb4}
 )
 
 func TestNewBoard(t *testing.T) {
 	t.Run("Construct valid boards", func(t *testing.T) {
 		for _, board := range validBoards {
-			b, err := NewBoard(board.RobotX, board.RobotY)
+			b, err := NewBoard(board.RobotX, board.RobotY, North)
 
 			if err != nil {
 				t.Log("Valid board should be valid!")
@@ -30,15 +32,15 @@ func TestNewBoard(t *testing.T) {
 
 	t.Run("Construct invalid boards", func(t *testing.T) {
 		for _, board := range invalidBoards {
-			b, err := NewBoard(board.RobotX, board.RobotY)
+			b, err := NewBoard(board.RobotX, board.RobotY, North)
 
 			if err == nil {
-				t.Log("Invalid board should not be created!")
+				t.Log("Invalid board should not be created! ", err)
 				t.Fail()
 			}
 
 			if b != nil {
-				t.Log("Invalid board should not exist!")
+				t.Log("Invalid board should not exist!", err)
 				t.Fail()
 			}
 		}
