@@ -19,7 +19,7 @@ var Boards []*Board
 
 var BoardIDCounter = 0
 
-func NewBoard(id, robotX, robotY int) (*Board, error) {
+func NewBoard(robotX, robotY int) (*Board, error) {
 
 	if Boards == nil {
 		Boards = make([]*Board, 1)

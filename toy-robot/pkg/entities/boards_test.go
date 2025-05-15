@@ -1,37 +1,53 @@
 package entities
 
-import (
-	"testing"
+import "testing"
+
+var (
+	b1            = Board{1, 0, 0}
+	b2            = Board{1, 4, 4}
+	bb1           = Board{1, -1, -1}
+	bb2           = Board{1, 5, 5}
+	validBoards   = [2]Board{b1, b2}
+	invalidBoards = [2]Board{bb1, bb2}
 )
 
+func TestNewBoard(t *testing.T) {
+	t.Run("Construct valid boards", func(t *testing.T) {
+		for _, board := range validBoards {
+			b, err := NewBoard(board.RobotX, board.RobotY)
+
+			if err != nil {
+				t.Log("Valid board should be valid!")
+				t.Fail()
+			}
+
+			if b.ID == 0 {
+				t.Log("Valid board should have a positive integer id!")
+				t.Fail()
+			}
+		}
+	})
+
+	t.Run("Construct invalid boards", func(t *testing.T) {
+		for _, board := range invalidBoards {
+			b, err := NewBoard(board.RobotX, board.RobotY)
+
+			if err == nil {
+				t.Log("Invalid board should not be created!")
+				t.Fail()
+			}
+
+			if b != nil {
+				t.Log("Invalid board should not exist!")
+				t.Fail()
+			}
+		}
+	})
+}
+
 func TestValidate(t *testing.T) {
-	validBoards := []Board{
-		{
-			ID:     1,
-			RobotX: 0,
-			RobotY: 0,
-		},
-		{
-			ID:     1,
-			RobotX: 4,
-			RobotY: 4,
-		},
-	}
 
-	invalidBoards := []Board{
-		{
-			ID:     1,
-			RobotX: -1,
-			RobotY: -1,
-		},
-		{
-			ID:     1,
-			RobotX: 5,
-			RobotY: 5,
-		},
-	}
-
-	t.Run("Valid boards", func(t *testing.T) {
+	t.Run("Validate valid boards", func(t *testing.T) {
 		for _, board := range validBoards {
 			err := board.validate()
 
@@ -42,7 +58,7 @@ func TestValidate(t *testing.T) {
 		}
 	})
 
-	t.Run("Invalid boards", func(t *testing.T) {
+	t.Run("Validate invalid boards", func(t *testing.T) {
 		for _, board := range invalidBoards {
 			err := board.validate()
 
