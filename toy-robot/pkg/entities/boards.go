@@ -51,7 +51,7 @@ func NewBoard(robotX, robotY, facing int) (*Board, error) {
 	return board, nil
 }
 
-func (b Board) validate() error {
+func (b *Board) validate() error {
 	if b.RobotX < 0 || b.RobotX >= BoardLimitX {
 		return errors.New("robot x out of bounds")
 	}
