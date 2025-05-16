@@ -70,5 +70,83 @@ func TestValidate(t *testing.T) {
 			}
 		}
 	})
+}
 
+func TestMoveRobot(t *testing.T) {
+
+	// these fixtures represent obvious legal moves for the robot and the board
+	t.Run("Reusing valid Robot movements", func(t *testing.T) {
+		for _, movement := range validRobotMovements {
+			t.Run(movement.label, func(t *testing.T) {
+				board, err := NewBoard(movement.x, movement.y, movement.facing)
+
+				if err != nil {
+					t.Log("Could not create board")
+					t.Fail()
+				}
+
+				err = board.MoveRobot()
+
+				if err != nil {
+					t.Log("Board disallowed a valid robot move")
+					t.Fail()
+				}
+			})
+		}
+	})
+
+	// The board should restrict a robot's movements if the robot is at the edge of a board
+	invalidBoardMovements := []struct {
+		x      int
+		y      int
+		xx     int
+		yy     int
+		facing int
+		label  string
+	}{
+		{
+			x:      4,
+			y:      4,
+			yy:     4,
+			facing: North,
+			label:  "Moving North",
+		},
+		{
+			x:      4,
+			y:      4,
+			xx:     4,
+			facing: East,
+			label:  "Moving East",
+		},
+		{
+			yy:     0,
+			facing: South,
+			label:  "Moving South",
+		},
+		{
+			xx:     0,
+			facing: West,
+			label:  "Moving West",
+		},
+	}
+
+	t.Run("Placing the robot at the corners of the table", func(t *testing.T) {
+		for _, movement := range invalidBoardMovements {
+			t.Run(movement.label, func(t *testing.T) {
+				board, err := NewBoard(movement.x, movement.y, movement.facing)
+
+				if err != nil {
+					t.Log("Could not create board")
+					t.Fail()
+				}
+
+				err = board.MoveRobot()
+
+				if err == nil {
+					t.Log("Board allowed an invalid robot move")
+					t.Fail()
+				}
+			})
+		}
+	})
 }

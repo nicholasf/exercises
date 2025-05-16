@@ -21,7 +21,6 @@ var boards []*Board
 var BoardIDCounter = 0
 
 func NewBoard(robotX, robotY, facing int) (*Board, error) {
-
 	if boards == nil {
 		boards = make([]*Board, 1)
 	}
@@ -60,6 +59,24 @@ func (b Board) validate() error {
 	if b.RobotY < 0 || b.RobotY >= BoardLimitY {
 		return errors.New("robot x out of bounds")
 	}
+
+	return nil
+}
+
+// The board tells the robot to move from its current location, which returns its intented x,y.
+// The board won't allow the movement the coordinates it returns are invalid.
+func (b *Board) MoveRobot() error {
+	x, y := b.Robot.move(b.RobotX, b.RobotY)
+
+	replacementBoard := Board{0, x, y, b.Robot}
+	err := replacementBoard.validate()
+
+	if err != nil {
+		return errors.New("Robot would fall off the board")
+	}
+
+	b.RobotX = x
+	b.RobotY = y
 
 	return nil
 }
