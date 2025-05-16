@@ -12,7 +12,7 @@ func main() {
 
 func reverser(w http.ResponseWriter, r *http.Request) {
 	a := r.URL.Query().Get("arg")
-	rv := Reverse(a)
+	rv := reverse(a)
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(rv))
 }
@@ -29,7 +29,7 @@ func ArgValidator(next http.HandlerFunc) http.HandlerFunc {
 	}
 }
 
-func Reverse(s string) (result string) {
+func reverse(s string) (result string) {
 	for _, v := range s {
 		result = string(v) + result
 	}
