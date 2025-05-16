@@ -2,6 +2,9 @@ package entities
 
 import "errors"
 
+// basic movement behaviour
+type mover func(x, y int) (int, int)
+
 const (
 	North = iota
 	East
@@ -9,9 +12,22 @@ const (
 	West
 )
 
+var (
+	MoveNorth = func(x, y int) (int, int) { return x, y + 1 }
+	MoveEast  = func(x, y int) (int, int) { return x + 1, y }
+	MoveSouth = func(x, y int) (int, int) { return x, y - 1 }
+	MoveWest  = func(x, y int) (int, int) { return x - 1, y }
+
+	compass = [4]mover{MoveNorth, MoveEast, MoveSouth, MoveWest}
+)
+
 type Robot struct {
-	Facing int
+	Facing int // an index to the orientation slice
 }
+
+// func NewRobot(facing int) (r Robot, err error) {
+
+// }
 
 func (r Robot) validate() error {
 	if r.Facing < North || r.Facing > West {
@@ -21,27 +37,22 @@ func (r Robot) validate() error {
 	return nil
 }
 
-func (r Robot) move(x, y int) (int, int) {
-	switch r.Facing {
-	case North:
-		return x, y + 1
-	case East:
-		return x + 1, y
-	case South:
-		return x, y - 1
-	case West:
-		return x - 1, y
-	default:
-		return x, y
+func (r *Robot) left() {
+	r.Facing = r.Facing - 1
+
+	if r.Facing < 0 {
+		r.Facing = 4
 	}
 }
 
-/*
+func (r Robot) move(x, y int) (int, int) {
+	return compass[r.Facing](x, y)
+}
 
-	I don't think this approach is correct.
+func (r *Robot) right() {
+	r.Facing = r.Facing + 1
 
-	I think the Robot should try to move, the board should not let it if it has hit a limit.
-
-	This is kind of happening already, actually.
-
-*/
+	if r.Facing > 4 {
+		r.Facing = 0
+	}
+}

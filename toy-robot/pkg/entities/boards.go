@@ -1,6 +1,8 @@
 package entities
 
-import "errors"
+import (
+	"errors"
+)
 
 type BoardID int
 
@@ -80,3 +82,22 @@ func (b *Board) MoveRobot() error {
 
 	return nil
 }
+
+func (b *Board) Left() {
+
+}
+
+func (b *Board) Move() (err error) {
+	return b.MoveRobot()
+}
+
+// This implicitly creates a new board
+func Place(x, y, facing int) (id int, err error) {
+	b, err := NewBoard(x, y, facing)
+
+	return b.ID, err
+}
+
+func (b *Board) Report() {}
+
+func (b *Board) Right() {}
