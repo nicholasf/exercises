@@ -45,10 +45,6 @@ func TestEvenOdds(t *testing.T) {
 
 	t.Run("Only even numbers in evens", func(t *testing.T) {
 		for _, i := range e {
-			if i == 0 {
-				break // channel is closed
-			}
-
 			if i%2 != 0 {
 				t.Logf("Uneven number in evens: %d", i)
 				t.Fail()
@@ -58,10 +54,6 @@ func TestEvenOdds(t *testing.T) {
 
 	t.Run("Only odd numbers in odds", func(t *testing.T) {
 		for _, i := range o {
-			if i == 0 {
-				break // channel is closed
-			}
-
 			if i%2 > 0 || i%2 < 0 {
 			} else {
 				t.Logf("Even number in odds: %d", i)
