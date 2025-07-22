@@ -1,2 +1,2 @@
-# go-exercises
-Just a collection of small Go revisions.
+# exercises
+Just a collection of small exercises in whichever language.
