@@ -7,7 +7,8 @@ func main() {
 	// nonBlockingChannelOps()
 	// closing()
 	// ranger()
-	summarise()
+	// summarise()
+	waitGroup()
 }
 
 /*
