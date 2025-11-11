@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///home/nicholasf/code/github/nicholasf/exercises/frontend/next/tutorial/app/page.js"],"sourcesContent":["import { useState } from 'react';\n \nfunction Header({ title }) {\n  return <h1>{title ? title : 'Default title'}</h1>;\n}\n \nexport default function HomePage() {\n  // ...\n}\n\n"],"names":[],"mappings":";;;;;AAAA;;;AAEA,SAAS,OAAO,EAAE,KAAK,EAAE;IACvB,qBAAO,8OAAC;kBAAI,QAAQ,QAAQ;;;;;;AAC9B;AAEe,SAAS;AACtB,MAAM;AACR","debugId":null}}]
+}

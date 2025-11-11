@@ -1,0 +1,158 @@
+[00:00:00.598] Server  LOG      ✓ Ready in 374ms
+[00:00:50.578] Server  ERROR    ⨯ ./app/page.js:1:10
+Ecmascript file had an error
+> 1 | import { useState } from 'react';
+    |          ^^^^^^^^
+  2 |  
+  3 | function Header({ title }) {
+  4 |   return <h1>{title ? title : 'Default title'}</h1>;
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+[00:00:51.305] Server  WARN     ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:51.309] Browser ERROR   uncaughtError: Error: ./app/page.js:1:10
+Ecmascript file had an error
+> 1 | import { useState } from 'react';
+    |          ^^^^^^^^
+  2 |  
+  3 | function Header({ title }) {
+  4 |   return <h1>{title ? title : 'Default title'}</h1>;
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+[00:00:51.487] Browser ERROR   ./app/page.js:1:10
+Ecmascript file had an error
+> 1 | import { useState } from 'react';
+    |          ^^^^^^^^
+  2 |  
+  3 | function Header({ title }) {
+  4 |   return <h1>{title ? title : 'Default title'}</h1>;
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:00:53.965] Browser ERROR   ./app/page.js:1:10
+Ecmascript file had an error
+> 1 | import { useState } from 'react';
+    |          ^^^^^^^^
+  2 |  
+  3 | function Header({ title }) {
+  4 |   return <h1>{title ? title : 'Default title'}</h1>;
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:02:03.543] Browser ERROR   ./app/page.js:1:10
+Ecmascript file had an error
+> 1 | import { useState } from 'react';
+    |          ^^^^^^^^
+  2 |  
+  3 | function Header({ title }) {
+  4 |   return <h1>{title ? title : 'Default title'}</h1>;
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:02:05.064] Browser ERROR   ./app/page.js:1:10
+Ecmascript file had an error
+> 1 | import { useState } from 'react';
+    |          ^^^^^^^^
+  2 |  
+  3 | function Header({ title }) {
+  4 |   return <h1>{title ? title : 'Default title'}</h1>;
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:06:43.354] Browser ERROR   ./app/page.js:1:10
+Ecmascript file had an error
+> 1 | import { useState } from 'react';
+    |          ^^^^^^^^
+  2 |  
+  3 | function Header({ title }) {
+  4 |   return <h1>{title ? title : 'Default title'}</h1>;
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:08:03.679] Browser ERROR   ./app/page.js:1:10
+Ecmascript file had an error
+> 1 | import { useState } from 'react';
+    |          ^^^^^^^^
+  2 |  
+  3 | function Header({ title }) {
+  4 |   return <h1>{title ? title : 'Default title'}</h1>;
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:08:03.679] Browser ERROR   ./app/page.js:13:10
+Ecmascript file had an error
+  11 | import LikeButton from './like-button';
+  12 |  
+> 13 | function Header({ title }) {
+     |          ^^^^^^
+  14 |   return <h1>{title ? title : 'Default title'}</h1>;
+  15 | }
+  16 |  
+
+the name `Header` is defined multiple times
+[00:08:03.679] Browser ERROR   ./app/page.js:17:25
+Ecmascript file had an error
+  15 | }
+  16 |  
+> 17 | export default function HomePage() {
+     |                         ^^^^^^^^
+  18 |   const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+  19 |  
+  20 |   return (
+
+the name `HomePage` is defined multiple times
+[00:08:03.679] Browser ERROR   ./app/page.js:17:1
+Ecmascript file had an error
+  15 | }
+  16 |  
+> 17 | export default function HomePage() {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 18 |   const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 19 |  
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 20 |   return (
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 21 |     <div>
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 22 |       <Header title="Develop. Preview. Ship." />
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 23 |       <ul>
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 24 |         {names.map((name) => (
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 25 |           <li key={name}>{name}</li>
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 26 |         ))}
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 27 |       </ul>
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 28 |       <LikeButton />
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 29 |     </div>
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 30 |   );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 31 | }
+     | ^^
+
+the name `default` is exported multiple times
+[00:08:07.316] Server  LOG      ✓ Compiled in 18ms
